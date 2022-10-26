@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="row mt-3">
+        <div class="col">
+            <h1>Agregar Tipo de animales</h1>
+        </div>
+    </div>
+
+    <form [formGroup]="formulario" autocomplete="off" (ngSubmit)="guardar()">
+        <div class="row">
+            <div class="col-3">
+                <mat-form-field class="w-100">
+                    <mat-label>Nombre:</mat-label>
+                    <input matInput formControlName="nombre" />
+                </mat-form-field>
+                <div *ngIf="(nombre?.dirty || nombre?.touched) && nombre?.errors">
+                    <mat-error *ngIf="nombre?.errors?.['required']">
+                        El nombre es requerido.
+                    </mat-error>
+                    <mat-error *ngIf="nombre?.errors?.['minlength']">
+                        El nombre debe contener al menos 5 caracteres.
+                    </mat-error>
+                    <mat-error *ngIf="nombre?.errors?.['maxlength']">
+                        El nombre no debe superar los 50 caracteres.
+                    </mat-error>
+                </div>
+            </div>
+            <div class="col-3">
+                <mat-form-field class="w-100">
+                    <mat-label>Tipo:</mat-label>
+                    <input matInput formControlName="tipo" />
+                </mat-form-field>
+                <div *ngIf="(tipo?.dirty || tipo?.touched) && tipo?.errors">
+                    <mat-error *ngIf="tipo?.errors?.['required']">
+                        El Tipo de animal es requerido.
+                    </mat-error>
+                    <mat-error *ngIf="tipo?.errors?.['minlength']">
+                        El Tipo de animal debe contener al menos 5 caracteres.
+                    </mat-error>
+                    <mat-error *ngIf="tipo?.errors?.['maxlength']">
+                        El Tipo de animal no debe superar los 50 caracteres
+                    </mat-error>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <button mat-raised-button color="primary" type="submit" [disabled]="formulario.invalid" class="me-5">
+                    Guardar <mat-icon>save</mat-icon>
+                </button>
+                <button mat-raised-button color="secondary" type="button" [routerLink]="['/especies']">
+                    Regresar <mat-icon>close</mat-icon>
+                </button>
+            </div>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,108 @@
+<div class="container">
+    <div class="row mt-3">
+        <div class="col">
+            <h1>Agregar Animal</h1>
+        </div>
+    </div>
+
+    <form [formGroup]="formulario" autocomplete="off" (ngSubmit)="guardar()">
+        <div class="row">
+            <div class="col-3">
+                <mat-form-field class="w-100">
+                    <mat-label>Tipo:</mat-label>
+                    <input matInput formControlName="Tipo" />
+                </mat-form-field>
+                <div *ngIf="(Tipo?.dirty || Tipo?.touched) && Tipo?.errors">
+                    <mat-error *ngIf="Tipo?.errors?.['required']">
+                        El Tipo de animal es requerido.
+                    </mat-error>
+                    <mat-error *ngIf="Tipo?.errors?.['minlength']">
+                        El Tipo de animal debe contener al menos 5 caracteres.
+                    </mat-error>
+                    <mat-error *ngIf="Tipo?.errors?.['maxlength']">
+                        El Tipo de animal no debe superar los 50 caracteres
+                    </mat-error>
+                </div>
+            </div>
+            <div class="col-3">
+                <mat-form-field class="w-100">
+                    <mat-label>Nombre:</mat-label>
+                    <input matInput formControlName="Nombre" />
+                </mat-form-field>
+                <div *ngIf="(Nombre?.dirty || Nombre?.touched) && Nombre?.errors">
+                    <mat-error *ngIf="Nombre?.errors?.['required']">
+                        El nombre es requerido.
+                    </mat-error>
+                    <mat-error *ngIf="Nombre?.errors?.['minlength']">
+                        El nombre debe contener al menos 5 caracteres.
+                    </mat-error>
+                    <mat-error *ngIf="Nombre?.errors?.['maxlength']">
+                        El nombre no debe superar los 50 caracteres.
+                    </mat-error>
+                </div>
+            </div>
+            <div class="col-3">
+                <mat-form-field class="w-100">
+                    <mat-label>Observación:</mat-label>
+                    <input matInput formControlName="Observacion" />
+                </mat-form-field>
+                <div *ngIf="(Observacion?.dirty || Observacion?.touched) && Observacion?.errors">
+                    <mat-error *ngIf="Observacion?.errors?.['required']">
+                        El observacion es requerido.
+                    </mat-error>
+                    <mat-error *ngIf="Observacion?.errors?.['minlength']">
+                        El observacion debe contener al menos 5 caracteres.
+                    </mat-error>
+                    <mat-error *ngIf="Observacion?.errors?.['maxlength']">
+                        El observacion no debe superar los 50 caracteres.
+                    </mat-error>
+                </div>
+            </div>
+            <div class="col-3">
+                <mat-form-field class="w-100">
+                    <mat-label>Ubicación:</mat-label>
+                    <input matInput formControlName="Ubicacion" />
+                </mat-form-field>
+                <div *ngIf="(Ubicacion?.dirty || Ubicacion?.touched) && Ubicacion?.errors">
+                    <mat-error *ngIf="Ubicacion?.errors?.['required']">
+                        El ubicacion es requerido.
+                    </mat-error>
+                    <mat-error *ngIf="Ubicacion?.errors?.['minlength']">
+                        El ubicacion debe contener al menos 5 caracteres.
+                    </mat-error>
+                    <mat-error *ngIf="Ubicacion?.errors?.['maxlength']">
+                        El ubicacion no debe superar los 50 caracteres.
+                    </mat-error>
+                </div>
+            </div>
+            <div class="col-3">
+                <mat-form-field class="w-100">
+                    <mat-label>Rasgos:</mat-label>
+                    <input matInput formControlName="Rasgos" />
+                </mat-form-field>
+                <div *ngIf="(Rasgos?.dirty || Ubicacion?.touched) && Ubicacion?.errors">
+                    <mat-error *ngIf="Ubicacion?.errors?.['required']">
+                        El ubicacion es requerido.
+                    </mat-error>
+                    <mat-error *ngIf="Ubicacion?.errors?.['minlength']">
+                        El ubicacion debe contener al menos 5 caracteres.
+                    </mat-error>
+                    <mat-error *ngIf="Ubicacion?.errors?.['maxlength']">
+                        El ubicacion no debe superar los 50 caracteres.
+                    </mat-error>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <button mat-raised-button color="primary" type="submit" [disabled]="formulario.invalid" class="me-5">
+                    Guardar <mat-icon>save</mat-icon>
+                </button>
+                <button mat-raised-button color="secondary" type="button" [routerLink]="['/animales']">
+                    Regresar <mat-icon>close</mat-icon>
+                </button>
+            </div>
+        </div>
+
+    </form>
+</div>
